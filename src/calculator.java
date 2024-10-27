@@ -1,7 +1,7 @@
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.Scanner;
+import javax.swing.*;
 
 
 
@@ -59,15 +59,16 @@ public class calculator implements ActionListener {
         funcButtons[7] = clrButton;
         funcButtons[8] = negButton;
 
+        calculator l = this;
         for (int i = 0; i < 9; i++) {
-            funcButtons[i].addActionListener(this);
+            funcButtons[i].addActionListener(l);
             funcButtons[i].setFont(myFont);
             funcButtons[i].setFocusable(false);
         }
 
         for (int i = 0; i < 10; i++) {
             numberButtons[i] = new JButton(String.valueOf(i));
-            numberButtons[i].addActionListener(this);
+            numberButtons[i].addActionListener(l);
             numberButtons[i].setFont(myFont);
             numberButtons[i].setFocusable(false);
         }
@@ -172,18 +173,10 @@ public class calculator implements ActionListener {
             
             switch(operator) {
 
-                case'+':
-                    result = num1 + num2;
-                    break;
-                case '-':
-                    result = num1 - num2;
-                    break;
-                case '*':
-                    result = num1 * num2;
-                    break;
-                case '/':
-                    result = num1 / num2;
-                    break;
+                case'+' -> result = num1 + num2;
+                case '-' -> result = num1 - num2;
+                case '*' -> result = num1 * num2;
+                case '/' -> result = num1 / num2;
 
             }
             textfield.setText(String.valueOf(result));
